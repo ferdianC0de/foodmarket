@@ -40,10 +40,10 @@ class FoodController extends Controller
 
 
     //Owner
-    public function foodsByOwner($owner = 1)
+    public function foodsByOwner()
     {
         // $foods = Food::where('owner',$owner);
-        $foods = Food::all();
+        $foods = Food::where('owner',Auth::id())->get();
         return view('food/index', ['foods' => $foods]);
     }
 
